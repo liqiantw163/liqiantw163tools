@@ -267,7 +267,6 @@ export function jsonp (obj) {
   let cbName = 'fn' + Date.now().toString()
   let head = document.querySelector('head')
   let scr = document.createElement('script')
-  // scr.src = obj.url + '?callback=' + cbName + '&' + objToQuery(obj.data)
   scr.src = `${obj.url}?${obj.callback ? obj.callback : 'callback'}=${cbName}&${objToQuery(obj.data)}`
   head.appendChild(scr)
   window[cbName] = function (res) {
